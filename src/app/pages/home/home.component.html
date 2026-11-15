@@ -1,0 +1,48 @@
+<div class="app-shell">
+  <app-header
+    (searchChange)="searchTerm = $event"
+    (cartToggle)="cartOpen = !cartOpen"
+    (menuToggle)="mobileOpen = !mobileOpen"
+  />
+  <nav class="mobile-nav" [class.show]="mobileOpen">
+    <a href="#">Home</a><a href="#products">Shop</a
+    ><a href="#categories">Categories</a><a href="#new">New Arrivals</a
+    ><a href="#deals">Deals</a>
+  </nav>
+  <main>
+    <app-hero (shopHeadphones)="selectCategory('Headphones')" />
+    <div class="store-layout" id="products">
+      <app-filter-sidebar
+        [categories]="categories"
+        [brands]="brands"
+        [features]="features"
+        [selectedCategory]="selectedCategory"
+        [maxPrice]="maxPrice"
+        (categoryChange)="selectCategory($event)"
+        (maxPriceChange)="maxPrice = $event"
+        (reset)="resetFilters()"
+      />
+      <app-products
+        [products]="visibleProducts"
+        [categories]="categories"
+        [selectedCategory]="selectedCategory"
+        [sort]="sort"
+        [showAll]="showAll"
+        [favorites]="favorites"
+        (categoryChange)="selectCategory($event)"
+        (sortChange)="sort = $event"
+        (favorite)="toggleFavorite($event)"
+        (loadMore)="showAll = true"
+      />
+    </div>
+  </main>
+  <app-cart
+    [open]="cartOpen"
+    (close)="cartOpen = false"
+  />
+  <div
+    class="backdrop"
+    [class.show]="cartOpen"
+    (click)="cartOpen = false"
+  ></div>
+</div>

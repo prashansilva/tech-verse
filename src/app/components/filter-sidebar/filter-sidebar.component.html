@@ -1,0 +1,59 @@
+<aside class="filters">
+  <div class="filter-heading">
+    <span>⚱</span> Filters <button (click)="reset.emit()">Clear All</button>
+  </div>
+  <div class="filter-block">
+    <div class="filter-title">Category <span>⌃</span></div>
+    <label class="check muted"
+      ><input type="checkbox" checked disabled /> All Products
+      <em>(2,481)</em></label
+    ><label *ngFor="let c of categories.slice(1)" class="check"
+      ><input
+        type="checkbox"
+        [checked]="selectedCategory === c"
+        (change)="categoryChange.emit(c)"
+      />
+      {{ c }} <em>({{ categoryCount(c) }})</em></label
+    >
+  </div>
+  <div class="filter-block">
+    <div class="filter-title">Price Range <span>⌃</span></div>
+    <input
+      class="range"
+      type="range"
+      min="0"
+      max="2000"
+      [ngModel]="maxPrice"
+      (ngModelChange)="maxPriceChange.emit($event)"
+    />
+    <div class="range-labels">
+      <span>$0</span><span>&#36;{{ maxPrice | number: "1.0-0" }}+</span>
+    </div>
+  </div>
+  <div class="filter-block">
+    <div class="filter-title">Brand <span>⌃</span></div>
+    <label class="check" *ngFor="let brand of brands"
+      ><input type="checkbox" /> {{ brand }}
+      <em>({{ brandCount(brand) }})</em></label
+    ><button class="show-more">+ Show More</button>
+  </div>
+  <div class="filter-block color-block">
+    <div class="filter-title">Color <span>⌃</span></div>
+    <div class="colors">
+      <i class="white"></i><i class="dark"></i><i class="violet"></i
+      ><i class="blue"></i><i class="red"></i><i class="green"></i><b>+</b>
+    </div>
+  </div>
+  <div class="filter-block">
+    <div class="filter-title">Rating <span>⌃</span></div>
+    <label class="check"
+      ><input type="checkbox" /> <span class="stars">★★★★★</span> & Up</label
+    >
+  </div>
+  <div class="filter-block">
+    <div class="filter-title">Features <span>⌃</span></div>
+    <label class="check" *ngFor="let f of features"
+      ><input type="checkbox" /> {{ f }} <em>({{ featureCount(f) }})</em></label
+    >
+  </div>
+</aside>

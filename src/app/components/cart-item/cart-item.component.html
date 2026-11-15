@@ -1,0 +1,21 @@
+<div class="cart-item">
+  <div class="cart-thumb" [class]="item.product.color">
+    <div class="mini-art" [innerHTML]="item.product.image | productImage"></div>
+  </div>
+  <div class="cart-detail">
+    <h4>{{ item.product.name }}</h4>
+    <p>
+      ⌁ &nbsp;{{
+        item.product.category === "smart-home" ? "Multi-Color" : "Graphite"
+      }}
+    </p>
+    <strong>{{
+      item.product.price | currency: "USD" : "symbol" : "1.2-2"
+    }}</strong>
+  </div>
+  <div class="qty">
+    <button disabled>−</button><span>{{ item.quantity }}</span
+    ><button disabled>+</button>
+  </div>
+  <button class="remove" disabled>♜</button>
+</div>

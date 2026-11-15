@@ -1,0 +1,37 @@
+<section class="catalog">
+  <div class="catalog-head">
+    <div>
+      <h2>
+        Electronics <small>{{ products.length | number }} products</small>
+      </h2>
+    </div>
+    <div class="sort">
+      Sort by:
+      <select [ngModel]="sort" (ngModelChange)="sortChange.emit($event)">
+        <option>Newest</option>
+        <option>Price: Low to High</option>
+        <option>Price: High to Low</option></select
+      ><button class="view active">▦</button><button class="view">☷</button>
+    </div>
+  </div>
+  <div class="category-tabs">
+    <button
+      *ngFor="let c of categories"
+      [class.active]="selectedCategory === c"
+      (click)="categoryChange.emit(c)"
+    >
+      {{ c }}
+    </button>
+  </div>
+  <div class="product-grid">
+    <app-product-card
+      *ngFor="let product of products"
+      [product]="product"
+      [favoriteState]="favorites.has(product.id)"
+      (favorite)="favorite.emit($event)"
+    ></app-product-card>
+  </div>
+  <button class="load-more" *ngIf="!showAll" (click)="loadMore.emit()">
+    Load more products <span>↓</span>
+  </button>
+</section>

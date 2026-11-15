@@ -1,0 +1,30 @@
+<article class="product-card">
+  <div class="product-image" [class]="product.color">
+    <span
+      *ngIf="product.tag"
+      class="tag"
+      [class.red]="product.tag === 'Deal'"
+      >{{ product.tag }}</span
+    >
+    <button class="heart" type="button" (click)="favorite.emit(product)">
+      {{ favoriteState ? "♥" : "♡" }}
+    </button>
+    <div class="product-art" [innerHTML]="product.image | productImage"></div>
+  </div>
+  <div class="product-info">
+    <h3>{{ product.name }}</h3>
+    <div class="rating">
+      <span>★</span> {{ product.rating }}
+      <small>({{ product.reviewsLabel }})</small>
+    </div>
+    <div class="price-row">
+      <strong>{{
+        product.price | currency: "USD" : "symbol" : "1.2-2"
+      }}</strong>
+      <del *ngIf="product.oldPrice">{{
+        product.oldPrice | currency: "USD" : "symbol" : "1.2-2"
+      }}</del>
+      <button type="button" aria-label="Cart preview only">🛒</button>
+    </div>
+  </div>
+</article>

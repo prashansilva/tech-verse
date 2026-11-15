@@ -1,0 +1,30 @@
+<header class="topbar">
+  <a class="brand" href="#" aria-label="TechVerse home"
+    ><span class="brand-mark">V</span><span>Tech<span>Verse</span></span></a
+  >
+  <nav class="main-nav">
+    <a class="active" href="#">Home</a><a href="#products">Shop</a
+    ><a href="#categories">Categories</a><a href="#new">New Arrivals</a
+    ><a class="deals" href="#deals">Deals</a>
+  </nav>
+  <div class="header-actions">
+    <label class="search"
+      ><span>⌕</span
+      ><input
+        [(ngModel)]="search"
+        (ngModelChange)="searchChange.emit($event)"
+        placeholder="Search for laptops, headphones, smart home..."
+        aria-label="Search products" /></label
+    ><button class="icon-btn" aria-label="Favorites">♡</button
+    ><button class="icon-btn bell" aria-label="Notifications">♧<i></i></button
+    ><button
+      class="icon-btn cart-trigger"
+      (click)="cartToggle.emit()"
+      aria-label="Open cart"
+    >
+      🛒<b>{{ cartCount }}</b>
+    </button>
+    <div class="avatar">SA</div>
+  </div>
+  <button class="mobile-menu" (click)="menuToggle.emit()">☰</button>
+</header>
