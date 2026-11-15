@@ -17,8 +17,7 @@ import { FormsModule } from "@angular/forms";
 })
 export class HeaderComponent {
   @Output() searchChange = new EventEmitter<string>();
-  @Output() cartToggle = new EventEmitter<void>();
   @Output() menuToggle = new EventEmitter<void>();
-  cartCount = 0;
+  cartCount = 3;
   search = "";
 }

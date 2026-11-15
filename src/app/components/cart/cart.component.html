@@ -1,9 +1,9 @@
-<aside class="cart-panel" [class.open]="open">
+<aside class="cart-panel">
   <div class="cart-head">
     <h2>
       Your Cart <span>({{ count }})</span>
     </h2>
-    <button (click)="close.emit()">×</button>
+    <button aria-label="Cart section">×</button>
   </div>
   <div class="cart-items">
     <app-cart-item *ngFor="let item of items" [item]="item"></app-cart-item>

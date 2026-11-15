@@ -26,7 +26,6 @@ export class HomeComponent {
   selectedCategory = "All Products";
   maxPrice = 2000;
   sort = "Newest";
-  cartOpen = true;
   mobileOpen = false;
   showAll = false;
   favorites = new Set<number>();

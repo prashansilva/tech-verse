@@ -1,7 +1,6 @@
 <div class="app-shell">
   <app-header
     (searchChange)="searchTerm = $event"
-    (cartToggle)="cartOpen = !cartOpen"
     (menuToggle)="mobileOpen = !mobileOpen"
   />
   <nav class="mobile-nav" [class.show]="mobileOpen">
@@ -9,6 +8,7 @@
     ><a href="#categories">Categories</a><a href="#new">New Arrivals</a
     ><a href="#deals">Deals</a>
   </nav>
+  <div class="home-layout">
   <main>
     <app-hero (shopHeadphones)="selectCategory('Headphones')" />
     <div class="store-layout" id="products">
@@ -36,13 +36,6 @@
       />
     </div>
   </main>
-  <app-cart
-    [open]="cartOpen"
-    (close)="cartOpen = false"
-  />
-  <div
-    class="backdrop"
-    [class.show]="cartOpen"
-    (click)="cartOpen = false"
-  ></div>
+  <app-cart />
+  </div>
 </div>

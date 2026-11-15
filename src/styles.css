@@ -24,21 +24,70 @@
   app-header .topbar { position: sticky; top: 0; }
   .mobile-nav { grid-column: 1 / -1; grid-row: 2; }
   main { grid-column: 1; grid-row: 3; margin: 0; min-width: 0; }
-  app-cart { display: block; grid-column: 2; grid-row: 3; min-width: 0; position: sticky; top: 82px; height: calc(100vh - 82px); }
-  app-cart .cart-panel { position: relative; inset: auto; width: 100%; height: calc(100vh - 82px); min-height: 720px; border-left: 1px solid #e7e7ef; box-shadow: -5px 0 20px rgba(37, 22, 78, .05); }
+  app-cart { display: block; grid-column: 2; grid-row: 3; min-width: 0; position: fixed; top: 82px; right: 0; width: 365px; height: calc(100vh - 82px); margin: 0; padding: 0; z-index: 8; }
+  app-cart .cart-panel { position: relative; inset: auto; width: 100%; height: 100%; min-height: 720px; margin: 0; border-radius: 0; border-left: 1px solid #e7e7ef; box-shadow: -5px 0 20px rgba(37, 22, 78, .05); overflow-y: auto; }
   app-cart .cart-panel.open { right: auto; }
   .hero { margin: 8px 24px 10px; height: 249px; }
   .store-layout { padding: 0 24px 24px; }
 }
 @media (max-width: 1200px) and (min-width: 851px) {
   .app-shell { grid-template-columns: minmax(0, 1fr) 320px; }
+  app-cart { width: 320px; }
   app-cart .cart-panel { min-height: 680px; }
   .hero { margin-left: 15px; margin-right: 15px; }
   .store-layout { padding-left: 15px; padding-right: 15px; }
 }
+
+/* Home page layout: cart belongs to the same padded content surface as the catalog. */
+@media (min-width: 851px) {
+  .app-shell { display: block !important; }
+  .home-layout { display: grid; grid-template-columns: minmax(0, 1fr) 365px; gap: 16px; align-items: start; padding: 8px 16px 24px; }
+  .home-layout main { min-width: 0; margin: 0; }
+  .home-layout .hero { margin: 0 0 10px; }
+  .home-layout .store-layout { padding: 0; }
+  .home-layout app-cart { display: block; position: sticky; top: 90px; width: auto; height: calc(100vh - 106px); margin: 0; padding: 0; z-index: 4; }
+  .home-layout app-cart .cart-panel { position: relative; inset: auto; width: 100%; height: 100%; min-height: 690px; border-radius: 15px; border: 1px solid #ececf2; box-shadow: 0 3px 14px rgba(26, 23, 55, .07); overflow: hidden; display: flex; flex-direction: column; }
+  .home-layout app-cart .cart-items { flex: 1 1 auto; min-height: 0; overflow-y: auto; padding-right: 4px; }
+  .home-layout app-cart .cart-head, .home-layout app-cart .cart-summary, .home-layout app-cart .checkout, .home-layout app-cart .view-cart { flex-shrink: 0; }
+}
+@media (max-width: 1200px) and (min-width: 851px) {
+  .home-layout { grid-template-columns: minmax(0, 1fr) 320px; padding-left: 10px; padding-right: 10px; }
+  .home-layout app-cart { width: auto; }
+}
+@media (max-width: 850px) {
+  .home-layout { display: block; }
+  .home-layout main { margin: 0; }
+  .home-layout app-cart { position: static; width: auto; height: auto; margin-top: 16px; }
+  .home-layout app-cart .cart-panel { min-height: 0; height: auto; border-radius: 15px; display: block; overflow: visible; }
+  .home-layout app-cart .cart-items { overflow: visible; }
+}
+
+@media (min-width: 851px) {
+  html, body { height: 100%; overflow: hidden; }
+  .app-shell { height: 100vh; min-height: 0; overflow: hidden; }
+  .home-layout { height: calc(100vh - 82px); min-height: 0; overflow: hidden; }
+  .home-layout main { height: 100%; min-height: 0; display: flex; flex-direction: column; overflow: hidden; }
+  app-hero { display: block; flex: 0 0 249px; height: 249px; min-height: 0; }
+  app-hero .hero { height: 249px; }
+  .home-layout .store-layout { flex: 1 1 auto; min-height: 0; overflow: hidden; }
+  app-filter-sidebar, app-products { display: block; min-height: 0; min-width: 0; height: 100%; }
+  .home-layout .filters { height: 100%; min-height: 0; overflow-y: auto; }
+  .home-layout .catalog { height: 100%; min-height: 0; max-height: 100%; overflow: hidden; display: flex; flex-direction: column; }
+  .home-layout .catalog-head, .home-layout .category-tabs { flex: 0 0 auto; }
+  .home-layout .product-scroll { flex: 1 1 auto; min-height: 0; overflow-y: auto; padding-right: 4px; }
+  .home-layout app-cart { height: 100%; min-height: 0; }
+  .home-layout app-cart .cart-panel { height: 100%; min-height: 0; }
+}
+@media (max-width: 850px) {
+  html, body { height: auto; overflow: auto; }
+  .app-shell, .home-layout { height: auto; min-height: 100vh; overflow: visible; }
+  .home-layout main { height: auto; display: block; overflow: visible; }
+  .home-layout .store-layout, .home-layout .filters, .home-layout .catalog, .home-layout .product-scroll { height: auto; min-height: 0; overflow: visible; }
+}
 @media (max-width: 850px) {
   app-header, app-cart { display: block; }
-  app-cart .cart-panel { top: 0; height: 100vh; }
+  app-cart { position: static; width: auto; height: auto; }
+  app-cart .cart-panel { position: static; right: auto; top: 0; width: 100%; height: auto; min-height: 0; overflow: visible; }
   .hero { margin: 8px 10px 10px; }
   .store-layout { padding-left: 15px; padding-right: 15px; }
 }
