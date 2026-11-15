@@ -9,21 +9,21 @@
   </nav>
   <div class="header-actions">
     <label class="search"
-      ><span>⌕</span
+      ><span class="material-symbols-rounded">search</span
       ><input
         [(ngModel)]="search"
         (ngModelChange)="searchChange.emit($event)"
         placeholder="Search for laptops, headphones, smart home..."
         aria-label="Search products" /></label
-    ><button class="icon-btn" aria-label="Favorites">♡</button
-    ><button class="icon-btn bell" aria-label="Notifications">♧<i></i></button
+    ><button class="icon-btn" aria-label="Favorites"><span class="material-symbols-rounded">favorite_border</span></button
+    ><button class="icon-btn bell" aria-label="Notifications"><span class="material-symbols-rounded">notifications_none</span><i></i></button
     ><button
       class="icon-btn cart-trigger"
       aria-label="Cart"
     >
-      🛒<b>{{ cartCount }}</b>
+      <span class="material-symbols-rounded">shopping_cart</span><b>{{ cartCount }}</b>
     </button>
     <div class="avatar">SA</div>
   </div>
-  <button class="mobile-menu" (click)="menuToggle.emit()">☰</button>
+  <button class="mobile-menu" (click)="menuToggle.emit()"><span class="material-symbols-rounded">menu</span></button>
 </header>

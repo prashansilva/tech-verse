@@ -5,7 +5,7 @@
   <div class="cart-detail">
     <h4>{{ item.product.name }}</h4>
     <p>
-      ⌁ &nbsp;{{
+      <span class="material-symbols-rounded">palette</span>&nbsp;{{
         item.product.category === "smart-home" ? "Multi-Color" : "Graphite"
       }}
     </p>
@@ -14,8 +14,8 @@
     }}</strong>
   </div>
   <div class="qty">
-    <button disabled>−</button><span>{{ item.quantity }}</span
-    ><button disabled>+</button>
+    <button disabled aria-label="Decrease quantity"><span class="material-symbols-rounded">remove</span></button><span>{{ item.quantity }}</span
+    ><button disabled aria-label="Increase quantity"><span class="material-symbols-rounded">add</span></button>
   </div>
-  <button class="remove" disabled>♜</button>
+  <button class="remove" disabled aria-label="Remove item"><span class="material-symbols-rounded">delete_outline</span></button>
 </div>

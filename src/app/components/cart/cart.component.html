@@ -3,7 +3,7 @@
     <h2>
       Your Cart <span>({{ count }})</span>
     </h2>
-    <button aria-label="Cart section">×</button>
+    <button aria-label="Cart section"><span class="material-symbols-rounded">close</span></button>
   </div>
   <div class="cart-items">
     <app-cart-item *ngFor="let item of items" [item]="item"></app-cart-item>
@@ -24,6 +24,6 @@
     </div>
   </div>
   <button class="checkout" [disabled]="!items.length">
-    Proceed to Checkout <span>→</span></button
+  Proceed to Checkout <span class="material-symbols-rounded">arrow_forward</span></button
   ><button class="view-cart">View Cart</button>
 </aside>

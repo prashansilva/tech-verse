@@ -7,14 +7,14 @@
       >{{ product.tag }}</span
     >
     <button class="heart" type="button" (click)="favorite.emit(product)">
-      {{ favoriteState ? "♥" : "♡" }}
+      <span class="material-symbols-rounded">{{ favoriteState ? "favorite" : "favorite_border" }}</span>
     </button>
     <div class="product-art" [innerHTML]="product.image | productImage"></div>
   </div>
   <div class="product-info">
     <h3>{{ product.name }}</h3>
     <div class="rating">
-      <span>★</span> {{ product.rating }}
+      <span class="material-symbols-rounded">star</span> {{ product.rating }}
       <small>({{ product.reviewsLabel }})</small>
     </div>
     <div class="price-row">
@@ -24,7 +24,7 @@
       <del *ngIf="product.oldPrice">{{
         product.oldPrice | currency: "USD" : "symbol" : "1.2-2"
       }}</del>
-      <button type="button" aria-label="Cart preview only">🛒</button>
+      <button type="button" aria-label="Cart preview only"><span class="material-symbols-rounded">shopping_cart</span></button>
     </div>
   </div>
 </article>

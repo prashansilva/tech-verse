@@ -11,7 +11,7 @@
         <option>Newest</option>
         <option>Price: Low to High</option>
         <option>Price: High to Low</option></select
-      ><button class="view active">▦</button><button class="view">☷</button>
+      ><button class="view active" aria-label="Grid view"><span class="material-symbols-rounded">grid_view</span></button><button class="view" aria-label="List view"><span class="material-symbols-rounded">view_list</span></button>
     </div>
   </div>
   <div class="category-tabs">
@@ -25,15 +25,18 @@
   </div>
   <div class="product-scroll">
     <div class="product-grid">
-      <app-product-card
-        *ngFor="let product of products"
-        [product]="product"
-        [favoriteState]="favorites.has(product.id)"
-        (favorite)="favorite.emit($event)"
-      ></app-product-card>
+        @for ( product of products; track product.id ) {
+            <app-product-card
+                [product]="product"
+                [favoriteState]="favorites.has(product.id)"
+                (favorite)="favorite.emit($event)"
+            ></app-product-card>
+        }
     </div>
-    <button class="load-more" *ngIf="!showAll" (click)="loadMore.emit()">
-      Load more products <span>↓</span>
-    </button>
+      @if ( !showAll ) {
+          <button class="load-more" (click)="loadMore.emit()">
+              Load more products <span class="material-symbols-rounded">expand_more</span>
+          </button>
+      }
   </div>
 </section>
